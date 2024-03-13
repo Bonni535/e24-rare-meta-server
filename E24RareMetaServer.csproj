@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>e24_rare_meta_server</RootNamespace>
+    <UserSecretsId>611a943c-59fc-4a29-94dd-c7430ff035e0</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
