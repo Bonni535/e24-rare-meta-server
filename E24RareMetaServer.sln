@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e24-rare-meta-server", "e24-rare-meta-server.csproj", "{37299CC2-A704-47EB-8DF2-2B47053DF5B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E24RareMetaServer", "E24RareMetaServer.csproj", "{37299CC2-A704-47EB-8DF2-2B47053DF5B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
