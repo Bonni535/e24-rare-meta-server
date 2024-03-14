@@ -2,6 +2,7 @@ using e24_rare_meta_server.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
+using E24RareMetaServer.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
+CategoryAPI.Map(app);
+CommentAPI.Map(app);
+PostAPI.Map(app);
+TagAPI.Map(app);
+UserAPI.Map(app);
 app.Run();
 
