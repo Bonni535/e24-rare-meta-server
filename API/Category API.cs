@@ -11,7 +11,45 @@ namespace E24RareMetaServer.API
         public static void Map(WebApplication app)
         {
 
-            // Post your API calls here
+            app.MapGet("/categories", (E24RareMetaServerDbContext db) =>
+            {
+                return db.Category.ToList();
+            });
+
+            app.MapGet("/categories/{id}", (E24RareMetaServerDbContext db, int id) =>
+            {
+                var category = db.Category.Find(id);
+                if (category == null) return Results.NotFound();
+                return Results.Ok(category);
+            });
+
+            app.MapPost("/categories", (E24RareMetaServerDbContext db, Category category) =>
+            {
+                db.Category.Add(category);
+                db.SaveChanges();
+                return Results.Created($"/categories/{category.Id}", category);
+            });
+
+            app.MapPut("/categories/{id}", (E24RareMetaServerDbContext db, int id, Category updatedCategory) =>
+            {
+                var category = db.Category.Find(id);
+                if (category == null) return Results.NotFound();
+
+                category.Label = updatedCategory.Label;
+
+                db.SaveChanges();
+                return Results.NoContent();
+            });
+
+            app.MapDelete("/categories/{id}", (E24RareMetaServerDbContext db, int id) =>
+            {
+                var category = db.Category.Find(id);
+                if (category == null) return Results.NotFound();
+
+                db.Category.Remove(category);
+                db.SaveChanges();
+                return Results.NoContent();
+            });
 
 
         }
