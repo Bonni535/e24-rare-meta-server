@@ -32,10 +32,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 CategoryAPI.Map(app);
 CommentAPI.Map(app);
 PostAPI.Map(app);
 TagAPI.Map(app);
 UserAPI.Map(app);
+
+
+
+
 app.Run();
 
