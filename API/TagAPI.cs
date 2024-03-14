@@ -11,19 +11,47 @@ namespace E24RareMetaServer.API
         public static void Map(WebApplication app)
         {
             // GET All Tags
-            app.MapGet("/api/tags", (E24RareMetaServerDbContext db) =>
+            app.MapGet("/tags", (E24RareMetaServerDbContext db) =>
             {
                 return db.Tag.ToList();
             });
 
             // CREATE a tag
-            app.MapPost("/api/tags", (E24RareMetaServerDbContext db, Tag newTag) =>
+            app.MapPost("/tags", (E24RareMetaServerDbContext db, Tag newTag) =>
             {
                 db.Tag.Add(newTag);
                 db.SaveChanges();
                 return Results.Created($"/api/Tag/{newTag.Id}", newTag);
             });
 
+            // DELETE a Tag
+            app.MapDelete("/tag/{id}", (E24RareMetaServerDbContext db, int id) =>
+            {
+                Tag tagToDelete = db.Tag.SingleOrDefault(tagToDelete => tagToDelete.Id == id);
+                if (tagToDelete == null)
+                {
+                    return Results.NotFound("Tag Not Found.");
+                }
+                db.Tag.Remove(tagToDelete);
+                db.SaveChanges();
+                return Results.NoContent();
+            });
+
+            // UPDATE a Tag
+            app.MapPut("/tag/{id}", (E24RareMetaServerDbContext db, int id, Tag tag) =>
+            {
+                Tag tagToUpdate = db.Tag.SingleOrDefault(tag => tag.Id == id);
+
+                if (tagToUpdate == null)
+                {
+                    return Results.NotFound("Artist Not Found.");
+                }
+
+                tagToUpdate.Label = tag.Label;
+
+                db.SaveChanges();
+                return Results.NoContent();
+            });
         }
     }
 }

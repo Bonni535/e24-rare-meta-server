@@ -51,7 +51,6 @@ namespace E24RareMetaServer.API
                 return Results.NoContent();
             });
 
-
         }
     }
 }
