@@ -44,7 +44,7 @@ namespace E24RareMetaServer.API
 
                 if (tagToUpdate == null)
                 {
-                    return Results.NotFound("Artist Not Found.");
+                    return Results.NotFound("Tag Not Found.");
                 }
 
                 tagToUpdate.Label = tag.Label;
