@@ -23,7 +23,4 @@
   <ItemGroup>
     <None Remove="API\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="API\" />
-  </ItemGroup>
 </Project>
