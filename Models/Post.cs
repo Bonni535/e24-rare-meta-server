@@ -11,5 +11,7 @@
         public string Content { get; set; }
         public ICollection<Comment> Comments { get; set; }
 
+        public ICollection<Tag> Tags { get; set; }
+
     }
 }
