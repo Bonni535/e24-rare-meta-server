@@ -7,6 +7,8 @@ public class E24RareMetaServerDbContext : DbContext
 
     public DbSet<Post> Posts { get; set; }
     public DbSet<Category> Category { get; set; }
+
+    public DbSet<Comment> Comments { get; set; }
     public DbSet<Tag> Tag { get; set; }
     public DbSet<User> Users { get; set; }
 
