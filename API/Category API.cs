@@ -38,7 +38,6 @@ namespace E24RareMetaServer.API
                 category.Label = updatedCategory.Label;
 
                 db.SaveChanges();
-
                 return Results.Json(category);
             });
 
