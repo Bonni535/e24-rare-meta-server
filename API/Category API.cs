@@ -38,8 +38,9 @@ namespace E24RareMetaServer.API
                 category.Label = updatedCategory.Label;
 
                 db.SaveChanges();
-                return Results.NoContent();
+                return Results.Json(category);
             });
+
 
             app.MapDelete("/categories/{id}", (E24RareMetaServerDbContext db, int id) =>
             {
