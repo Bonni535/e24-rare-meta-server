@@ -39,13 +39,20 @@ namespace E24RareMetaServer.API
                 postToUpdate.ImageUrl = updatedPost.ImgUrl;
                 postToUpdate.Content = updatedPost.Content;
                 db.SaveChanges();
-                return Results.Created($"/artists/{postToUpdate.Id}", updatedPost);
+                return Results.Created($"/posts/{postToUpdate.Id}", updatedPost);
 
             });
 
             app.MapGet("/posts/{postId}", (E24RareMetaServerDbContext db, int postId) => // get single post by id
             {
                 return db.Posts.FirstOrDefault(s => s.Id == postId);
+            });
+
+            app.MapPost("/posts", (E24RareMetaServerDbContext db, Post newPost) =>
+            {
+                db.Posts.Add(newPost); 
+                db.SaveChanges();
+                return Results.Created($"/posts/{newPost.Id}", newPost);
             });
 
 
