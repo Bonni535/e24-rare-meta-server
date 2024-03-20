@@ -52,6 +52,18 @@ namespace E24RareMetaServer.API
                 return Results.NoContent();
             });
 
+            app.MapGet("/posts/byCategory/{categoryId}", (E24RareMetaServerDbContext db, int categoryId) =>
+            {
+                var postsInfo = db.Posts
+                                  .Where(p => p.CategoryId == categoryId)
+                                  .Select(p => new { p.Id, p.Title })
+                                  .ToList();
+
+                return Results.Ok(postsInfo);
+            });
+
+
+
         }
     }
 }
