@@ -16,6 +16,12 @@ namespace E24RareMetaServer.API
                 return db.Tag.ToList();
             });
 
+            // GET Single Tag
+            app.MapGet("/tags/{tagId}", (E24RareMetaServerDbContext db, int tagId) =>
+            {
+                return db.Tag.FirstOrDefault(s => s.Id == tagId);
+            });
+
             // CREATE a tag
             app.MapPost("/tags", (E24RareMetaServerDbContext db, Tag newTag) =>
             {
@@ -25,7 +31,7 @@ namespace E24RareMetaServer.API
             });
 
             // DELETE a Tag
-            app.MapDelete("/tag/{id}", (E24RareMetaServerDbContext db, int id) =>
+            app.MapDelete("/tags/{id}", (E24RareMetaServerDbContext db, int id) =>
             {
                 Tag tagToDelete = db.Tag.SingleOrDefault(tagToDelete => tagToDelete.Id == id);
                 if (tagToDelete == null)
@@ -38,7 +44,7 @@ namespace E24RareMetaServer.API
             });
 
             // UPDATE a Tag
-            app.MapPut("/tag/{id}", (E24RareMetaServerDbContext db, int id, Tag tag) =>
+            app.MapPut("/tags/{id}", (E24RareMetaServerDbContext db, int id, Tag tag) =>
             {
                 Tag tagToUpdate = db.Tag.SingleOrDefault(tag => tag.Id == id);
 
